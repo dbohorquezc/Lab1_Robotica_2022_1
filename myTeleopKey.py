@@ -5,6 +5,7 @@ import numpy as np
 from geometry_msgs.msg import Twist 
 import termios, sys, os
 from turtlesim.srv import TeleportAbsolute
+from turtlesim.srv import TeleportRelative
 TERMIOS = termios
 
 def getkey():
@@ -30,6 +31,15 @@ def teleport(x, y, ang):
         print('Teleported to x: {}, y: {}, ang: {}'.format(str(x),str(y),str(ang)))
     except rospy.ServiceException as e:
         print(str(e))
+def teleportRel(x,ang):
+    rospy.wait_for_service('/turtle1/teleport_relative')
+    try:
+        teleportR = rospy.ServiceProxy('/turtle1/teleport_relative', TeleportRelative)
+        resp1 = teleportR(x, ang)
+        
+    except rospy.ServiceException:
+        pass
+
 
 
 def pubVel(vel_x, ang_z, t):
@@ -59,7 +69,7 @@ if __name__ == '__main__':
             if Tec==b'd':
                 pubVel(0,-0.5,0.01)
             if Tec==b' ':
-                pubVel(0,np.pi,1)
+                teleportRel(0,np.pi)
             if Tec==b'r':
                 teleport(5.544445,5.544445,0)
             if Tec==b'\x1b':
