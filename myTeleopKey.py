@@ -43,14 +43,8 @@ def pubVel(vel_x, ang_z, t):
     while rospy.Time.now() < endTime:
         pub.publish(vel)
 
-def pubPos(pos_x, angP_z):
-    pub = rospy.Publisher('/turtle1/pose', Twist, queue_size=10)
-    rospy.init_node('Pos', anonymous=False)
-    pos = Twist()
-    pos.x = pos_x
-    pos.thetha = angP_z
-    
 
+    
 if __name__ == '__main__':
     pubVel(0,0,0.1)
     try:
@@ -65,12 +59,12 @@ if __name__ == '__main__':
             if Tec==b'd':
                 pubVel(0,-0.5,0.01)
             if Tec==b' ':
-                pubPos(0,np.pi)
+                pubVel(0,np.pi,1)
             if Tec==b'r':
                 teleport(5.544445,5.544445,0)
             if Tec==b'\x1b':
                 break                    
-            print(Tec)
+            
 
     except rospy.ROSInterruptException:
         pass 
