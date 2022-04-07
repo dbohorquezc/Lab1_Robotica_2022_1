@@ -1,4 +1,4 @@
-<p style="font-size:300%; background-color:pink; color:blue; text-align:center;line-height : 80px; margin : 0; padding : 0;">
+<p align="center"; style="font-size:300%; background-color:pink; color:blue;line-height : 80px; margin : 0; padding : 0;">
 Taller 1</p>
 <p style="font-size:240%; background-color:pink; color:red; text-align:center;line-height : 60px; margin : 0; padding : 0;">
 Técnicas de Inteligencia Artificial - Visión de Máquina</p1>
