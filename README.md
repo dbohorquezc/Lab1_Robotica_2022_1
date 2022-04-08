@@ -1,4 +1,4 @@
-<h1>This is a heading</h1>
+<h1>Laboratorio 1: </h1>
 <p align="center"; style="font-size:50px; background-color:pink; color:blue;line-height : 80px; margin : 0; padding : 0;">
 Taller 1</p>
 <p align="center";style="font-size:50px; background-color:pink; color:red; text-align:center;line-height : 60px; margin : 0; padding : 0;">
@@ -13,11 +13,4 @@ Robótica</p1>
 <br>
 <img src="Fig/Escudo_UN.png",width=100,height=100>
 <p align="center"; style="font-size:50px; text-align:center; line-height : 30px; margin-top : 0; "> <br>16 de marzo de 2022</p>
-<html>
-<body style="background-color:powderblue;">
 
-
-<p>This is a paragraph.</p>
-
-</body>
-</html>
