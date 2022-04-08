@@ -1,4 +1,4 @@
-<h1> align="center" Laboratorio 1: </h1>
+<h1> align="center"; Laboratorio 1: </h1>
 <p align="center";style="font-size:50px; background-color:pink; color:red; text-align:center;line-height : 60px; margin : 0; padding : 0;">
 Robótica</p1>
 <p align="center";style="font-size:50px; text-align:center; line-height : 40px;  margin-top : 0; margin-bottom : 0; "> <br> Giovanni Andrés Páez Ujueta</p>
