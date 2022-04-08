@@ -1,4 +1,4 @@
-<h1> align="center";"> Laboratorio 1: </h1>
+<h1 align="center"; style="text-align:center;">Laboratorio 1: Introducción ROS</h1>
 <p align="center";style="font-size:50px; background-color:pink; color:red; text-align:center;line-height : 60px; margin : 0; padding : 0;">
 Robótica</p1>
 <p align="center";style="font-size:50px; text-align:center; line-height : 40px;  margin-top : 0; margin-bottom : 0; "> <br> Giovanni Andrés Páez Ujueta</p>
@@ -16,5 +16,5 @@ Robótica</p1>
 <h1 style="color:blue;">This is a heading</h1>
 <h1 style="font-size:300%;">This is a heading</h1>
 <p style="font-size:160%;">This is a paragraph.</p>
-<h1 align="center"; style="text-align:center;">Centered Heading</h1>
+
 <p style="text-align:center;">Centered paragraph.</p>
