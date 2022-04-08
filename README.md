@@ -5,7 +5,7 @@ Robótica</p1>
 <p align="center";style="font-size:200%; text-align:center; line-height : 40px;  margin-top : 0; margin-bottom : 0; "> <br> Giovanni Andrés Páez Ujueta</p>
 <p align="center";style="font-size:160%; text-align:center; line-height : 20px; margin-top : 0; "> email: gpaezu@unal.edu.co</p>
 <p align="center"; style="font-size:200%; text-align:center; line-height : 40px;  margin-top : 0; margin-bottom : 0; "> <br> Daniel Esteban Bohorquez Cifuentes</p>
-<p align="center"; style="font-size:160%; text-align:center; line-height : 20px; margin-top : 0; "> email: laveramo@unal.edu.co</p>
+<p align="center"; style="font-size:160%; text-align:center; line-height : 20px; margin-top : 0; "> email: dbohorquezc@unal.edu.co</p>
 <p align="center"; style="font-size:180%; text-align:center; line-height : 30px;  margin-top : 0; margin-bottom : 0; "> <br><br>INGENIERÍA MECATRÓNICA</p>
 <p align="center"; style="font-size:180%; text-align:center; line-height : 30px; margin-top : 0; "> Facultad de Ingeniería</p>
 <p align="center"; style="font-size:160%; text-align:center; line-height : 30px; margin-top : 0; "> Universidad Nacional de Colombia Sede Bogotá</p>
