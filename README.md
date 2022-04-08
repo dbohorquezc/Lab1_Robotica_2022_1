@@ -11,10 +11,3 @@ Robótica</p1>
 <br>
 <img src="Fig/Escudo_UN.png",width=100,height=100>
 <p align="center"; style="font-size:50px; text-align:center; line-height : 30px; margin-top : 0; "> <br>16 de marzo de 2022</p>
-
-<h1 style="background-color:powderblue;">This is a heading</h1>
-<h1 style="color:blue;">This is a heading</h1>
-<h1 style="font-size:300%;">This is a heading</h1>
-<p style="font-size:160%;">This is a paragraph.</p>
-
-<p style="text-align:center;">Centered paragraph.</p>
