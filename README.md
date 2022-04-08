@@ -172,7 +172,7 @@ TERMIOS = termios
  ## Análisis y Resultados
  
  ### Primer punto (MATLAB)
- * No es posible suscribirse dos veces de seguida a un nodo, ya que si se quiere revisar ejemplo *pose* es recomendable entonces volver a ejecutar el comando para visualizar el último mensaje obtenido, ya que al estar suscrito y volver a suscribirse va a producir un error
+ * No es posible suscribirse dos veces de seguida a un nodo, ya que si se quiere revisar por ejemplo *pose* es recomendable entonces volver a ejecutar el comando para visualizar el último mensaje obtenido, ya que al estar suscrito y volver a suscribirse va a producir un error
  * Es necesario crear un cliente para realizar una publiación, esto se ve en la línea de código mostrada en la sección anterior.
  
  ### Segundo punto (Python)
