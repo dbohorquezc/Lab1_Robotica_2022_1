@@ -19,7 +19,7 @@ Robótica</p1>
 
 ### Primer punto (MATLAB)
 
-**1.**  En el SO Ubuntu, se lazó una terminal para ingresar el comando *roscore*, y así inicializar el nodo maestro.
+**1.**  En el SO Ubuntu, se lanzó una terminal para ingresar el comando *roscore*, y así inicializar el nodo maestro.
 
 **2.** En una segunda terminal se escribe el comando *rosrun turtlesim turtlesim node* para ejecutar turtlesim.
 
@@ -36,7 +36,7 @@ velMsg.Linear.X = 1; %Valor del mensaje
 send(velPub,velMsg); %Envio
 pause(1)
 ``` 
-Para comprobar la configuracion se utiliza la interfaz visual de ROS, ya que  se puede obtener informacion de los nodos en funcionamiento; y así evideciar que esté el componente de Matlab conectado al nodo de turtlesim. Al ejecutar  se observó como la tortuga avanzaba en su eje x relativo, es decir, hacia el frente una unidad.
+Para comprobar la configuración se utiliza la interfaz visual de ROS, ya que  se puede obtener información de los nodos en funcionamiento; y así evideciar que esté el componente de Matlab conectado al nodo de turtlesim. Al ejecutar  se observó como la tortuga avanzaba en su eje x relativo, es decir, hacia el frente una unidad.
 
 **4.** Se agregó las siguientes lineas de código para suscribirse al tópico de pose.
  
@@ -46,7 +46,7 @@ PosX=a.LatestMessage.X
  ```
 Se evidencia la subscripción mencionada y una variable PosX para mostrar el útimo mensaje en pantalla.
 
-**5.**  se realizaron  las siguientes lineas de código para  permitir enviar datos a los valores de la pose de turtle1, por medio del servicio de Teleport Absolut. Para esto es necesario crear un cliente que acceda al servicio, y al igual que en el topico, crear un mensaje de envio en el que se le indica los argumentos X, Y y Theta.
+**5.**  se realizaron  las siguientes lineas de código para  permitir enviar datos a los valores de la pose de turtle1, por medio del servicio de Teleport Absolut. Para esto es necesario crear un cliente que acceda al servicio, y al igual que en el tópico, crear un mensaje de envio en el que se le indica los argumentos X, Y y Theta.
 
 
   ```
@@ -96,7 +96,7 @@ TERMIOS = termios
     return c
  ``` 
  
- **3.** Se realiza la conexion  al servicio de teleport_absolute, que va a ser usado para el caso en que se oprima la tecla R.
+ **3.** Se realiza la conexión  al servicio de teleport_absolute, que va a ser usado para el caso en que se oprima la tecla R.
  
  ``` 
  def teleport(x, y, ang):
@@ -109,7 +109,7 @@ TERMIOS = termios
         print(str(e))
  ```
  
- **4.** Se añade el código que permite la conexion al servicio de teleport_relative, que va a ser usado para el caso en que se oprima la tecla SPACE.
+ **4.** Se añade el código que permite la conexión al servicio de teleport_relative, que va a ser usado para el caso en que se oprima la tecla SPACE.
  
  ```
  def teleportRel(x,ang):
@@ -122,7 +122,7 @@ TERMIOS = termios
         pass
  ``` 
  
- **5.** A continuacion se muestra la funcion que permite publicar la velocidad la cual será necesaría para el caso en que se opriman las teclas W, A, S y D.
+ **5.** A continuación se muestra la función que permite publicar la velocidad la cual será necesaría para el caso en que se opriman las teclas W, A, S y D.
  
  ```
  def pubVel(vel_x, ang_z, t):
@@ -136,7 +136,7 @@ TERMIOS = termios
     while rospy.Time.now() < endTime:
         pub.publish(vel)
  ``` 
-**6.** Finalmente  se pone cada uno de los casos con su correspondiente funcion y valores de entrada.
+**6.** Finalmente  se pone cada uno de los casos con su correspondiente función y valores de entrada.
  ``` 
  if __name__ == '__main__':
     pubVel(0,0,0.1)
@@ -165,15 +165,15 @@ TERMIOS = termios
  
  **7.** Se incluye el script realizado (*myTeleopKey.py*) al artchivo CMakeLists.txt.
  
- **8.** En una terminal se ingresa el comando *catkin make* para guardar los cambios realizados
+ **8.** En una terminal se ingresa el comando *catkin build* para guardar los cambios realizados
  
- **9.** Se realiza las pruebas del codigo ejecutando Turtlesim, suceando y corriendo el archivo creado con el comando *rosrun hello turtle myTeleopKey.py*.
+ **9.** Se realiza las pruebas del código ejecutando Turtlesim, surceando y corriendo el archivo creado con el comando *rosrun hello turtle myTeleopKey.py*.
  
  ## Análisis y Resultados
  
  ### Primer punto (MATLAB)
  * No es posible suscribirse dos veces de seguida a un nodo, ya que si se quiere revisar ejemplo *pose* es recomendable entonces volver a ejecutar el comando para visualizar el último mensaje obtenido, ya que al estar suscrito y volver a suscribirse va a producir un error
- * Es necesario crear un cliente para realizar una publiacion, esto se ve en la línea de código mostrada en la sección anterior.
+ * Es necesario crear un cliente para realizar una publiación, esto se ve en la línea de código mostrada en la sección anterior.
  
  ### Segundo punto (Python)
  * Como primer estudio se realizó una análisis de la lectura de teclado, donde se evidencia que la libreria Keyboard presenta problemas en linux tal y como lo menciona la guia y por ende fue necesario utilizar la libreria Termios y la función ya preestblecida.
@@ -183,5 +183,5 @@ TERMIOS = termios
  ## conclusiones
 
 * Se comprobó como MATLAB es una herramienta util para tener interacciones con los nodos de Ros, de tal forma que se pudo conectar, deconectar el nodo de MATLAB y realizar publicaciones y subscripciones.
-* Se experimentó en general una facilidad de conexion en MATALB, aun que no había mucha literatura para realizar investigaciones. Comporado con python tine tiempos de ejecucion más lentos, python se siente más escalable por la cantidad de librerías que tiene para aportar, pero es necesario conocer adecuadamente cada funcion para realizar conexión y posteriormente publicaciones subscripciones.
-* Se culminó satisfactoriamente el reto propuesto tanto en MAtlab como en Python, teniendo unn buena introduccion a la implmentacion de ROS en estos lenguajes.
+* Se experimentó en general una facilidad de conexion en MATALB, aun que no había mucha literatura para realizar investigaciones. Comporado con python tine tiempos de ejecución más lentos, python se siente más escalable por la cantidad de librerías que tiene para aportar, pero es necesario conocer adecuadamente cada función para realizar conexión y posteriormente publicaciones subscripciones.
+* Se culminó satisfactoriamente el reto propuesto tanto en Matlab como en Python, teniendo unn buena introducción a la implmentacion de ROS en estos lenguajes.
