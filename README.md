@@ -96,7 +96,7 @@ TERMIOS = termios
     return c
  ``` 
  
- **2.** Se realiza la conexion  al servicio de teleport_absolute, que va a ser usado para el caso en que se oprima la tecla R.
+ **3.** Se realiza la conexion  al servicio de teleport_absolute, que va a ser usado para el caso en que se oprima la tecla R.
  
  ``` 
  def teleport(x, y, ang):
@@ -109,7 +109,7 @@ TERMIOS = termios
         print(str(e))
  ```
  
- **3.** Se añade el código que permite la conexion al servicio de teleport_relative, que va a ser usado para el caso en que se oprima la tecla SPACE.
+ **4.** Se añade el código que permite la conexion al servicio de teleport_relative, que va a ser usado para el caso en que se oprima la tecla SPACE.
  
  ```
  def teleportRel(x,ang):
@@ -122,7 +122,7 @@ TERMIOS = termios
         pass
  ``` 
  
- **4.** A continuacion se muestra la funcion que permite publicar la velocidad la cual será necesaría para el caso en que se opriman las teclas W, A, S y D.
+ **5.** A continuacion se muestra la funcion que permite publicar la velocidad la cual será necesaría para el caso en que se opriman las teclas W, A, S y D.
  
  ```
  def pubVel(vel_x, ang_z, t):
@@ -136,7 +136,7 @@ TERMIOS = termios
     while rospy.Time.now() < endTime:
         pub.publish(vel)
  ``` 
-**5.** Finalmente  se pone cada uno de los casos con su correspondiente funcion y valores de entrada.
+**6.** Finalmente  se pone cada uno de los casos con su correspondiente funcion y valores de entrada.
  ``` 
  if __name__ == '__main__':
     pubVel(0,0,0.1)
@@ -163,11 +163,11 @@ TERMIOS = termios
         pass 
  ```
  
- **6.** Se incluye el script realizado (*myTeleopKey.py*) al artchivo CMakeLists.txt.
+ **7.** Se incluye el script realizado (*myTeleopKey.py*) al artchivo CMakeLists.txt.
  
- **7.** En una terminal se ingresa el comando *catkin make* para guardar los cambios realizados
+ **8.** En una terminal se ingresa el comando *catkin make* para guardar los cambios realizados
  
- **8.** Se realiza las pruebas del codigo ejecutando Turtlesim, suceando y corriendo el archivo creado con el comando *rosrun hello turtle myTeleopKey.py*.
+ **9.** Se realiza las pruebas del codigo ejecutando Turtlesim, suceando y corriendo el archivo creado con el comando *rosrun hello turtle myTeleopKey.py*.
  
  ## Análisis y Resultados
  
@@ -176,10 +176,12 @@ TERMIOS = termios
  * Es necesario crear un cliente para realizar una publiacion, esto se ve en la línea de código mostrada en la sección anterior.
  
  ### Segundo punto (Python)
-
+ * Como primer estudio se realizó una análisis de la lectura de teclado, donde se evidencia que la libreria Keyboard presenta problemas en linux tal y como lo menciona la guia y por ende fue necesario utilizar la libreria Termios y la función ya preestblecida.
+ * Se evidenció por medio de la consola que el tiempo elegido en la función de velocidad determina el periodo de muestreo en que se lee la instrucción de teclado, por esta razon se tomo un tiempo de 0.01 y un movimiento de 0.5 ya que si se elegi un valor menor se volvia un desplazamiento lento.
+ * Al utilizar la función de velocidad para realizar el giro de 180° se encontraba un desfase que a pesar de utilizar valores exactos de Pi y un tiempo de 1 segundo no se pudo corregir, para lo cual se corrigió utulizando el servicio Teleport Relative el cual no presenta el desfase.
  
  ## conclusiones
 
 * Se comprobó como MATLAB es una herramienta util para tener interacciones con los nodos de Ros, de tal forma que se pudo conectar, deconectar el nodo de MATLAB y realizar publicaciones y subscripciones.
-* Se experimentó en general una facilidad de conexion en MATALB, aun que no había mucha literatura para realizar investigaciones. Comporado con python tine tiempos de ejecucion más lentos, python se siente más escalable por la cantidad de librerías que tiene para aportar, pero es necesario conocer adecuadamente cada funcion para realizar conexion y posteriormente publicaciones subscripciones.
-* Se culmino satisfactoriamente el reto propuesto tanto en MAtlab como en Python, teniendo unn buena introduccion a la implmentacion de ROS en estos lenguajes.
+* Se experimentó en general una facilidad de conexion en MATALB, aun que no había mucha literatura para realizar investigaciones. Comporado con python tine tiempos de ejecucion más lentos, python se siente más escalable por la cantidad de librerías que tiene para aportar, pero es necesario conocer adecuadamente cada funcion para realizar conexión y posteriormente publicaciones subscripciones.
+* Se culminó satisfactoriamente el reto propuesto tanto en MAtlab como en Python, teniendo unn buena introduccion a la implmentacion de ROS en estos lenguajes.
