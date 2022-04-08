@@ -153,3 +153,6 @@ TERMIOS = termios
  
  ## conclusiones
 
+* Se comprobó como MATLAB es una herramienta util para tener interacciones con los nodos de Ros, de tal forma que se pudo conectar, deconectar el nodo de MATLAB y realizar publicaciones y subscripciones.
+* Se experimentó en general una facilidad de conexion en MATALB, aun que no había mucha literatura para realizar investigaciones. Comporado con python tine tiempos de ejecucion más lentos, python se siente más escalable por la cantidad de librerías que tiene para aportar, pero es necesario conocer adecuadamente cada funcion para realizar conexion y posteriormente publicaciones subscripciones.
+* Se culmino satisfactoriamente el reto propuesto tanto en MAtlab como en Python, teniendo unn buena introduccion a la implmentacion de ROS en estos lenguajes.
