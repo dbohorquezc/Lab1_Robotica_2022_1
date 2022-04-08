@@ -77,7 +77,7 @@ from turtlesim.srv import TeleportAbsolute
 from turtlesim.srv import TeleportRelative
 TERMIOS = termios
  ``` 
- **2.** Se agrega la siguiente función que cumple con recibir las teclas pulsadas en la terminal de VS y así interpretarlas y posteriormente realizar una accion.
+ **2.** Se agrega la siguiente función que cumple con recibir las teclas pulsadas en la terminal de VS y así interpretarlas y posteriormente realizar una acción.
  
  ```
  def getkey():
