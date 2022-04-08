@@ -19,9 +19,11 @@ Robótica</p1>
 
 ### Primer punto (MATLAB)
 
-* En ubuntu, se lazó una terminal para ingresar el comando *roscore*, y así inicializar el nodo maestro.
-* En una segunda terminal se escribe el comando *rosrun turtlesim turtlesim node* para ejecutar turtlesim.
-* En MATLAB se creo un  script con el codigo dado en la guía.
+**1.**  En el SO Ubuntu, se lazó una terminal para ingresar el comando *roscore*, y así inicializar el nodo maestro.
+
+**2.** En una segunda terminal se escribe el comando *rosrun turtlesim turtlesim node* para ejecutar turtlesim.
+
+**3.** En MATLAB se creo un  script con el siguiente codigo (dado en la guía), con el objetivo de empezar conexion con el nodo de ROS y mover la tortuga.
 
 ```
 %%
@@ -34,18 +36,19 @@ velMsg.Linear.X = 1; %Valor del mensaje
 send(velPub,velMsg); %Envio
 pause(1)
 ``` 
-Para comprobar esta configuracion se utiliza la interfaz visual de ROS, en la que s epuede obtener informacion de los nodos en funcionamiento, y así evideciar que esté el componente de Matlab conectado al nodo maestro. Al ejecutar  se observó como la tortuga avanzaba en su eje x relativo, es decir, hacia el frente una unidad.
+Para comprobar la configuracion se utiliza la interfaz visual de ROS, ya que  se puede obtener informacion de los nodos en funcionamiento; y así evideciar que esté el componente de Matlab conectado al nodo de turtlesim. Al ejecutar  se observó como la tortuga avanzaba en su eje x relativo, es decir, hacia el frente una unidad.
 
-* Se creo las siguientes lineas de código para suscribirse al tópico de pose
+**4.** Se agregó las siguientes lineas de código para suscribirse al tópico de pose.
  
  ```
 a=rossubscriber("/turtle1/pose","turtlesim/Pose");
 PosX=a.LatestMessage.X
- ``` 
-Cabe resaltar que solo se debe suscribir una vez al nodo, por lo que si queremos saber repetidas veces la ubicacion de la tortuga debemos ejecutar la ultima linea de codigo.
-*  se realizaron  las siguientes lineas de código para  permitir enviar datos a los valores de la pose de turtle1, por medio del servicio de Teleport Absolut, para esto es necesario crear un cliente que acceda al servicio, y al igual que en el topico, crear un mensaje de envio en el que se le indica los argumentos X, Y y Theta.
+ ```
+Se evidencia la subscripción mencionada y una variable PosX para mostrar el útimo mensaje en pantalla.
 
-Se evidencia la subscripción mencionada y una variable PosX que para Matlab es una variable que muestra en pantalla. Ahora se realiza un codigo que permita hacer uso del servicio de Teleport Absolute, para lo cual es necesario  crear un cliente al cual se acceda a dicho servicio y al igual que en el topico crear un mensaje de envio con el cual se le indica los argumentos, que para este caso es X, Y y Theta. 
+**5.**  se realizaron  las siguientes lineas de código para  permitir enviar datos a los valores de la pose de turtle1, por medio del servicio de Teleport Absolut. Para esto es necesario crear un cliente que acceda al servicio, y al igual que en el topico, crear un mensaje de envio en el que se le indica los argumentos X, Y y Theta.
+
+
   ```
 Client = rossvcclient('/turtle1/teleport_absolute');
 msg=rosmessage(Client);
@@ -56,17 +59,16 @@ response=call(Client,msg);
 pause(1
  
  ``` 
- Finalmente se usa el siguiente comando para finalizar la conexion del nodo maestro con MATLAB, en este caso esta comentado para relizar más modificaciones de posición si asi se desea.
+**6.**  Finalmente se usa el siguiente comando para finalizar la conexion del nodo de Turtlesim con MATLAB, en este caso está comentado para relizar más modificaciones de posición si asi se desea.
 ```console
 %%
 %rosshutdown
 ```
  
  ### Segundo punto (Python)
-
+**1.** Se importarón las librerías necesarías para la ejecucion del programa.
  ```
  #!/usr/bin/env python3
-from pynput.keyboard import Key, Listener
 import rospy
 import numpy as np
 from geometry_msgs.msg import Twist 
@@ -75,6 +77,8 @@ from turtlesim.srv import TeleportAbsolute
 from turtlesim.srv import TeleportRelative
 TERMIOS = termios
  ``` 
+ **2.** Se agrega la siguiente función que cumple con recibir las teclas pulsadas en la terminal de VS y así interpretarlas y posteriormente realizar una accion.
+ 
  ```
  def getkey():
     fd = sys.stdin.fileno()
@@ -90,7 +94,10 @@ TERMIOS = termios
     finally:
         termios.tcsetattr(fd, TERMIOS.TCSAFLUSH, old)
     return c
- ```  
+ ``` 
+ 
+ **2.** Se realiza la conexion  al servicio de teleport_absolute, que va a ser usado para el caso en que se oprima la tecla R.
+ 
  ``` 
  def teleport(x, y, ang):
     rospy.wait_for_service('/turtle1/teleport_absolute')
@@ -101,6 +108,9 @@ TERMIOS = termios
     except rospy.ServiceException as e:
         print(str(e))
  ```
+ 
+ **3.** Se añade el código que permite la conexion al servicio de teleport_relative, que va a ser usado para el caso en que se oprima la tecla SPACE.
+ 
  ```
  def teleportRel(x,ang):
     rospy.wait_for_service('/turtle1/teleport_relative')
@@ -111,6 +121,9 @@ TERMIOS = termios
     except rospy.ServiceException:
         pass
  ``` 
+ 
+ **4.** A continuacion se muestra la funcion que permite publicar la velocidad la cual será necesaría para el caso en que se opriman las teclas W, A, S y D.
+ 
  ```
  def pubVel(vel_x, ang_z, t):
     pub = rospy.Publisher('/turtle1/cmd_vel', Twist, queue_size=10)
@@ -123,7 +136,7 @@ TERMIOS = termios
     while rospy.Time.now() < endTime:
         pub.publish(vel)
  ``` 
-
+**5.** Finalmente  se pone cada uno de los casos con su correspondiente funcion y valores de entrada.
  ``` 
  if __name__ == '__main__':
     pubVel(0,0,0.1)
@@ -149,6 +162,13 @@ TERMIOS = termios
     except rospy.ROSInterruptException:
         pass 
  ```
+ 
+ **6.** Se incluye el script realizado (*myTeleopKey.py*) al artchivo CMakeLists.txt.
+ 
+ **7.** En una terminal se ingresa el comando *catkin make* para guardar los cambios realizados
+ 
+ **8.** Se realiza las pruebas del codigo ejecutando Turtlesim, suceando y corriendo el archivo creado con el comando *rosrun hello turtle myTeleopKey.py*.
+ 
  ## Análisis y Resultados
  
  ### Primer punto (MATLAB)
